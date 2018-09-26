@@ -20,7 +20,7 @@ end
 class Listing
   @@all = []
 
-  attr_accessor :name, :trip, :city, :guest, :count
+  attr_accessor :name, :trip, :city, :guest
 
   def initialize(name, city)
     @name = name
@@ -98,6 +98,14 @@ class Guest
     trips.map { |trip| trip.listing }
   end
 
+  def self.find_all_by_name(name)
+    Guest.all.select { |guest| guest.name == name}
+  end
+
+  def self.pro_traveller
+    Guest.all.select { |guest| guest.trip_count > 1 }
+  end
+
 end
 
 bream = Listing.new('Bream Close', 'London')
@@ -110,6 +118,7 @@ akmal = Guest.new('Akmal')
 ayne = Guest.new('Ayne')
 haziq = Guest.new('Haziq')
 diana = Guest.new('Diana')
+ezryn = Guest.new('Ezryn')
 
 akmal_bream = akmal.create_trip('May 1', bream)
 akmal_lapwing = akmal.create_trip('May 10', lapwing)
