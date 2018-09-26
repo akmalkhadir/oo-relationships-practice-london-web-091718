@@ -13,18 +13,21 @@ class Trip
   def self.all
     @@all
   end
+
+
 end
 
 class Listing
   @@all = []
 
-  attr_accessor :name, :trip, :city, :guest
+  attr_accessor :name, :trip, :city, :guest, :count
 
   def initialize(name, city)
     @name = name
     @city = city
     @@all << self
   end
+
 
   def self.all
     @@all
@@ -40,12 +43,24 @@ class Listing
     Trip.all.select { |trip| trip.listing == self }
   end
 
+  #Using defined trips, count the number or results in the Array
   def trip_count
     trips.count
   end
 
+  #Using defined trips, map it to only include listing instance
   def guests
     trips.map { |trip| trip.guest }
+  end
+
+  def self.find_all_by_city(city)
+    Listing.all.select { |listing| listing.city == city}
+  end
+
+  def self.most_popular
+    # Create a new has, listing as key, trip count as value | then uses max_by to select max count(array), return instance of top listing
+    counter_hash = Listing.all.map { |listing| [listing, listing.trip_count] }.to_h
+    counter_hash.max_by{|listing, count| count}.first
   end
 end
 
@@ -73,10 +88,12 @@ class Guest
     Trip.all.select { |trip| trip.guest == self }
   end
 
+  #Using defined trips, count the number or results in the Array
   def trip_count
     trips.count
   end
 
+  #Using defined trips, map it to only include listing instance
   def listings
     trips.map { |trip| trip.listing }
   end
