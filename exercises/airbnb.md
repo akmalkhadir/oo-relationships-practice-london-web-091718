@@ -11,34 +11,34 @@ You are building an app for an Airbnb competitor
 Write out the relationships using has_many, belongs_to and has_many_through. Create the necessary methods to connect these classes.
 
 #### Listing
-- #guests
+- #guests (Done)
   - returns an array of all guests who have stayed at a listing
-- #trips
+- #trips (Done)
   - returns an array of all trips at a listing
-- #trip_count
+- #trip_count (Done)
   - returns the number of trips that have been taken to that listing
-- .all
+- .all (Done)
   - returns an array of all listings
-- .find_all_by_city(city)
+- .find_all_by_city(city) (Done)
   - takes an argument of a city name (as a string) and returns all the listings for that city
-- .most_popular
+- .most_popular (Done)
   - finds the listing that has had the most trips
 
 #### Guest
-- #listings
+- #listings (Done)
   - returns an array of all listings a guest has stayed at
-- #trips
+- #trips (Done)
   - returns an array of all trips a guest has made
-- #trip_count
+- #trip_count (Done)
   - returns the number of trips a guest has taken
-- .all
+- .all (Done)
   - returns an array of all guests
 - .pro_traveller
   - returns an array of all guests who have made over 1 trip
 - .find_all_by_name(name)
   - takes an argument of a name (as a string), returns the all guests with that name
 
-#### Trip
+#### Trip (Done)
 - #listing
   - returns the listing object for the trip
 - #guest
